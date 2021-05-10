@@ -1,5 +1,7 @@
 FROM jenkins/jenkins:2.60.2
 
+ARG docker_version=17.12.0~ce-0~debian
+
 #install docker
 USER root
 RUN apt-get update && apt-get -y install \
