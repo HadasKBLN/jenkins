@@ -4,10 +4,7 @@ FROM jenkins/jenkins:2.60.2
 USER root
 RUN echo "root:pass" | chpasswd
 RUN apt-get update && apt-get install -y python3-pip && apt-get install -y jq
-RUN apt-get update -y
-RUN curl -fsSL https://get.docker.com -o get-docker.sh
-# RUN curl -sSL https://get.docker.com/ | sh
-RUN sh get-docker.sh
+RUN curl -sSL https://get.docker.com/ | sh
 RUN usermod -aG docker jenkins
 ENV DOCKER_HOST unix:///var/run/docker.sock
 
