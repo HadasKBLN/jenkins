@@ -10,7 +10,7 @@ ENV DOCKER_HOST unix:///var/run/docker.sock
 
 #install gcloud
 # RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-
+# RUN echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 # RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8B57C5C2836F4BEB
 # RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FEEA9169307EA071
 # RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FEEA9169307EA071
@@ -27,7 +27,11 @@ ENV DOCKER_HOST unix:///var/run/docker.sock
 # RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 # RUN apt-get update && apt-get install -y google-cloud-sdk
 # RUN apt-get install -y google-cloud-sdk-app-engine-java
-ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
-RUN curl -sSL https://sdk.cloud.google.com | bash
+
+# ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
+# RUN curl -sSL https://sdk.cloud.google.com | bash
+
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg  add - && apt-get update -y && apt-get install google-cloud-sdk -y
+      
 
 USER jenkins
