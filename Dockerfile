@@ -10,6 +10,7 @@ ENV DOCKER_HOST unix:///var/run/docker.sock
 
 #install gcloud
 RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8B57C5C2836F4BEB
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FEEA9169307EA071
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FEEA9169307EA071
