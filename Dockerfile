@@ -27,6 +27,7 @@ ENV DOCKER_HOST unix:///var/run/docker.sock
 # RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 # RUN apt-get update && apt-get install -y google-cloud-sdk
 # RUN apt-get install -y google-cloud-sdk-app-engine-java
+ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
 RUN curl -sSL https://sdk.cloud.google.com | bash
 
 USER jenkins
