@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.277.4-lts-centos7
+FROM jenkins/jenkins:2.277.4-lts-jdk11
 
 #install docker
 USER root
